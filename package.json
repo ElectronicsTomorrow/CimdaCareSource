@@ -1,0 +1,40 @@
+{
+  "name": "threejsprojects",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "build": "webpack --config ./src/client/webpack.prod.js",
+    "dev": "webpack serve --config ./src/client/webpack.dev.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@mediapipe/camera_utils": "^0.3.1640029074",
+    "@mediapipe/control_utils": "^0.6.1629159505",
+    "@mediapipe/control_utils_3d": "^0.3.1635987963",
+    "@mediapipe/drawing_utils": "^0.3.1620248257",
+    "@mediapipe/pose": "^0.5.1635988162",
+    "@types/dat.gui": "^0.7.7",
+    "@types/jquery": "^3.5.16",
+    "@types/opencc-js": "^1.0.0",
+    "@types/three": "^0.146.0",
+    "cannon-es": "^0.20.0",
+    "dat.gui": "^0.7.9",
+    "opencc-js": "^1.0.5",
+    "three": "^0.147.0",
+    "ts-loader": "^9.4.2",
+    "typescript": "^4.9.4",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "webpack-dev-server": "^4.11.1",
+    "webpack-merge": "^5.8.0"
+  },
+  "dependencies": {
+    "@types/jqueryui": "^1.12.17",
+    "@types/webrtc": "^0.0.33",
+    "jquery": "^3.7.0",
+    "jquery-ui-bundle": "^1.12.1-migrate"
+  }
+}
