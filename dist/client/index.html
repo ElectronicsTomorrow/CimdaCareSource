@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8" />
+        <link rel="stylesheet" type="text/css" href="style.css">
+        <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="shortcut icon" href="img/Common/favicon.ico" />
+        <!-- This section here belongs to the MediaPipe Pose Estimation -->
+        <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.css" crossorigin="anonymous">
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/camera_utils@0.1/camera_utils.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/control_utils@0.1/control_utils.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/drawing_utils@0.2/drawing_utils.js" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@mediapipe/pose@0.2/pose.js" crossorigin="anonymous"></script>
+        <script src="https://unpkg.com/siriwave/dist/siriwave.umd.min.js"></script>
+        <!---------------- End of MediaPipe Pose Estimation --------------->
+        <title>Cimda Care</title>
+    </head>
+
+    <body>
+    <!---------------------------------- Section: Loading dialog ---------------------------------->
+    <div id="loading-info-dialog" class="loading-info-dialog">
+        <div class="cimda-wave-logo">
+            <h2>Cimda</h2>
+            <h2>Cimda</h2>
+        </div>
+        <div id="text-007-style" class="text-007-style">
+            <span>你的生活智能伴侶</span>
+        </div>
+        <div id="loading-info-version" class="loading-info-version">2.01.01.000</div>
+        <hr></hr>
+        <div id="loading-info-msg" class="loading-info-msg">系統起在初始化中, 請稍候片刻 ...</div>
+    </div>
+    <!---------------------------------- Section: Welcome screen ---------------------------------->
+    <section id="welcome-screen">
+        <img id="welcome-text" class="welcome-text"></img>
+        <button type="button" id="welcome-readyBtn" class="welcome-readyBtn">進入</button>
+    </section>
+    <!---------------------------------- Section: Reminder screen --------------------------------->
+    <section id="reminder-screen" class="reminder-screen">
+        <div id="reminder-alarmList-panel">
+            <div>
+                <img id="reminder-UpArrowBtn" class="reminder-UpArrowBtn"></img>
+            </div>
+            <ul id="reminder-alarmList" class="reminder-alarmList">
+            </ul>
+            <div>
+                <img id="reminder-DownArrowBtn" class="reminder-DownArrowBtn"></img>
+            </div>
+        </div>
+    </section>
+    <!---------------------------------- Section: Exercise screen --------------------------------->
+    <section id="exercise-screen" class="exercise-screen">
+        <!------------------------------ The main selection dropdown ------------------------------>
+        <div>
+            <button type="button" id="exercise-dropdown-driver" class="exercise-dropdown-driver">請按這裡選擇運動...<p class="exercise-dropdown-driver-suffix">秒</p></button>
+        </div>
+        <div id="exercise-dropdown-panel">
+            <div>
+                <img id="exercise-UpArrowBtn" class="exercise-UpArrowBtn"></img>
+                <img id="exercise-DownArrowBtn" class="exercise-DownArrowBtn"></img>
+            </div>
+            <ul id="exercise-dropdown-list" class="exercise-dropdown-list">
+            </ul>
+        </div>
+        <!----------------------------- The readiness countdown circle ---------------------------->
+        <div id="exercise-readiness-countdown" class="exercise-readiness-countdown"></div>
+        <!----------------------------- End readiness countdown circle ---------------------------->
+        <!------------------------------ The exercise countdown circle ---------------------------->
+        <div id="exercise-countdown-circle" class="exercise-countdown-circle">
+            <svg width="380" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(120,120)">
+                    <circle r="100" class="exercise-e-c-base"/>
+                    <g transform="rotate(-90)">
+                        <circle r="100" class="exercise-e-c-progress"/>
+                        <g id="exercise-e-pointer" class="exercise-e-pointer">
+                            <circle cx="100" cy="0" r="14" class="exercise-e-c-pointer"/>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+            <div id="exercise-countdown-remain-time" class="exercise-countdown-remain-time">00:30</div>
+        </div>
+        <!------------------------------ End exercise countdown circle ---------------------------->
+        <div id="exercise-demo-stage" class="slide-in-from-left">
+            <img id="exercise-demo-stage-pic" class="exercise-demo-stage-pic"></img>
+        </div>
+        <div>
+            <button id="exercise-play-button" class="exercise-play-button"></button>
+            <button id="exercise-stop-button" class="exercise-stop-button"></button>
+        </div>
+        <div id="exercise-pose-estimate-stage" class="slide-in-from-right">
+            <video id="MediaPipe-input-video"></video>
+            <canvas id="exercise-pose-estimate-canvas" width="1080px" height="1080px">
+            </canvas>
+            <div id="exercise-pose-estimate-unavailable">請設置好相機, 以便評估運動姿勢
+            </div>
+            <div id="exercise-pose-estimate-comments" class="exercise-pose-estimate-comments">
+            </div>
+        </div>
+    </section>
+    <!------------------------------- Section: Entertainment screen ------------------------------->
+    <section id="entertainment-screen" class="entertainment-screen">
+        <!------------------------------------- The Equalizer------- ------------------------------>
+        <canvas id="entertain-equalizer" class="slide-in-from-left"></canvas>
+        <!------------------------------ The main selection dropdown ------------------------------>
+        <div>
+            <button type="button" id="entertain-dropdown-driver" class="entertain-dropdown-driver">請按這裡選擇歌曲...</button>
+        </div>
+        <div id="entertain-dropdown-panel">
+            <div>
+                <img id="entertain-UpArrowBtn" class="entertain-UpArrowBtn"></img>
+                <img id="entertain-DownArrowBtn" class="entertain-DownArrowBtn"></img>
+            </div>
+            <ul id="entertain-dropdown-list" class="entertain-dropdown-list">
+            </ul>
+        </div>
+        <div id="entertain-song-play-panel">
+            <div id="entertain-song-plan-decoration_L"></div>
+            <button id="entertain-play-button" class="entertain-play-button"></button>
+            <button id="entertain-full-karaoke-button" class="entertain-full-karaoke-button"><</button>
+            <button id="entertain-half-karaoke-button" class="entertain-half-karaoke-button"></button>
+            <button id="entertain-stop-button" class="entertain-stop-button"></button>
+            <button id="entertain-pause-button" class="entertain-pause-button"></button>
+            <button id="entertain-resume-button" class="entertain-resume-button"></button>
+            <div id="entertain-song-plan-decoration_R"></div>
+        </div>
+        <div id="entertain-lyrics-ribbon" class="slide-in-from-right"></div>
+    </section>
+    <!------------------------------------ Section: Chat screen ----------------------------------->
+    <section id="chat-screen" class="chat-screen">
+        <button id="chat-microphone"><img id="chat-microphone-icon">按一下說話10秒</button>
+        <!----------------------------------- The digital clock ----------------------------------->
+        <div id="chat-clock-container" class="chat-clock-container">
+            <div class="chat-clock-box">
+                <div class="chat-clock">
+                    <div class="chat-clock-hour">
+                        <div class="chat-clock-hr" id="chat-clock-hr"></div>
+                    </div>
+                    <div class="chat-clock-min">
+                        <div class="chat-clock-mn" id="chat-clock-mn"></div>
+                    </div>
+                    <div class="chat-clock-sec">
+                        <div class="chat-clock-sc" id="chat-clock-sc"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-------------------------------------- The calendar ------------------------------------->
+        <div id="chat-calender" class="chat-calender">
+            <div class="chat-calendar-month">
+                <button id="chat-calendar-prev" class="chat-calendar-prev"></button>
+                <div class="chat-month-year-area">
+                    <h2 id="chat-calendar-month-title"></h2>
+                    <h2 id="chat-calendar-year-title"></h2>
+                </div>
+                <button id="chat-calendar-next" class="chat-calendar-next"></button>
+            </div>
+            <div class="chat-calendar-weeks">
+                <div>日</div>
+                <div>一</div>
+                <div>二</div>
+                <div>三</div>
+                <div>四</div>
+                <div>五</div>
+                <div>六</div>
+            </div>
+            <div class="chat-calendar-days">
+            </div>
+        </div>
+        <!--------------------------------- The translation board --------------------------------->
+        <div id="chat-translation" class="chat-translation">
+            <div id="chat-translation-header">对你说话的理解</div>
+            <div><hr></hr></div>
+            <div id="chat-translated-text" class="chat-translated-text"></div>
+        </div>
+        <!--------------------------------- The Countdown circle ---------------------------------->
+        <div id="chat-countdown-circle" class="chat-countdown-circle">
+            <svg width="380" viewBox="0 0 240 240" xmlns="http://www.w3.org/2000/svg">
+                <g transform="translate(120,120)">
+                    <circle r="100" class="chat-e-c-base"/>
+                    <g transform="rotate(-90)">
+                        <circle r="100" class="chat-e-c-progress"/>
+                        <g id="chat-e-pointer" class="chat-e-pointer">
+                            <circle cx="100" cy="0" r="14" class="chat-e-c-pointer"/>
+                        </g>
+                    </g>
+                </g>
+            </svg>
+            <div id="chat-countdown-remain-time" class="chat-countdown-remain-time">00:30</div>
+            <canvas id="chat-MicPhone-Visualizer-1">
+            </canvas>
+            <canvas id="chat-MicPhone-Visualizer-2">
+            </canvas>
+        </div>
+        <!---------------------------------- End countdown circle --------------------------------->
+    </section>
+    <!---------------------------------- Section: The alarm clock --------------------------------->
+    <section id="alarm-panel" class="slide-in-from-top">
+        <div>
+            <table class="alarm-detail-head">
+                <tr>
+                    <td class="alarm-detail-head-text">夠鐘, 請服藥</td>
+                    <td class="alarm-detail-head-pic"><img id="alarm-detail-head-bell"></img></td>
+                </tr>
+            </table>
+            <table class="alarm-detail-body">
+                <tr>
+                    <td id="alarm-detail-simpleMediName" class="alarm-detail-body-text-box"></td>
+                    <td rowspan="3" class="alarm-detail-body-image-box"><img id="alarm-detail-mediPic" class="alarm-detail-body-pic"></img></td>
+                </tr>
+                <tr>
+                    <td id="alarm-detail-howToTake" class="alarm-detail-body-text-box"></td>
+                </tr>
+                <tr>
+                    <td id="alarm-detail-prerequisite" class="alarm-detail-body-text-box"></td>
+                </tr>
+            </table>
+            <table class="alarm-detail-footer">
+                <tr>
+                    <td><a href="#" id="alarm-detail-close">關閉</a></td>
+                </tr>
+            </table>
+        </div>
+    </section>
+    <footer>
+        <!----------------------- Section: Navigation bar and its 4 buttons------------------------>
+        <div id="navigationBar" class="navigationBar">
+            <nav>
+                <ul>
+                    <li><a href="#" id="navigation-bar-reminder">提醒</a></li>
+                    <li><a href="#" id="navigation-bar-exercise">運動</a></li>
+                    <li><a href="#" id="navigation-bar-entertainment">娛樂</a></li>
+                    <li><a href="#" id="navigation-bar-chat">對話</a></li>
+                </ul>
+            </nav>
+        </div>
+    </footer>
+    <script type="module" src="bundle.js"></script>
+    </body>
+</html>

@@ -1,0 +1,1925 @@
+body {
+    overflow: hidden;
+    margin: 0px;
+}
+
+/*///////////////////////////////////////////////////////////////////
+Welcome screen section
+///////////////////////////////////////////////////////////////////*/
+/*******************************************************************
+defines the Welcome screen
+********************************************************************/
+.welcome-text {
+    position: absolute;
+    content: url('img/Welcome/Welcome_Text.png');
+    background: transparent;
+    width: 523px;
+    height: 163px;
+    top:    40%;
+    left:   53%;
+    visibility: hidden;
+}
+.welcome-readyBtn {
+    width: 15%;
+    height: 8%;
+    right: 26%;
+    bottom: 25%;
+    background: linear-gradient(to bottom, rgba(115,230,103, 1) 0.5%, rgba(54,210,132, 1) 100%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    border: none;
+    border-radius: 30px;
+    color: #ffffff;
+    font-size: 300%;
+    font-weight: bold;
+    font-family: "I.Ming";
+    box-shadow: 4px 4px 10px rgba(0,0,0, 0.55);
+    position: fixed;
+    cursor: pointer;
+    transition: background 0.1s;
+    visibility: hidden;
+}
+.welcome-readyBtn:active {
+    background: linear-gradient(to bottom, rgba(54,210,132, 1) 0.5%, rgba(115,230,103, 1) 100%);
+    box-shadow: none;
+}
+
+
+/*///////////////////////////////////////////////////////////////////
+Reminder screen section
+///////////////////////////////////////////////////////////////////*/
+/*******************************************************************
+Beginning of the Reminder screen
+********************************************************************/
+.reminder-screen {
+    visibility: hidden;
+}
+.reminder-UpArrowBtn {
+    content: url('img/Common/List_UpArrow.png');
+    background: transparent;
+    left: 20%;
+    top: 2%;
+    height: 10%;
+    position: fixed;
+    border: none;
+    cursor: pointer;
+}
+.reminder-UpArrowBtn:active {
+    content: url('img/Common/List_UpArrow_Pressed.png');
+}
+.reminder-alarmList {
+    width: 30%;
+    height: 38%;
+    left: 8%;
+    top: 10%;
+    position: fixed;
+    cursor: pointer;
+    list-style-type: none;
+    border: none;
+    padding-left: 0;
+    overflow: hidden;
+}
+.reminder-alarmListItem {
+    width: 100%;
+    height: 31%;
+    margin: 1.2% 0;
+}
+.reminder-alarmBtn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border-radius: 50px;
+    padding-left: 7%;
+    padding-right: 3%;
+    font-size: 430%;
+    align-items: center;
+    justify-content: left;
+    color: rgba(179,70,105, 1);
+    background: linear-gradient(to bottom, rgba(246,232,228,0.8) 0.5%, rgba(249,248,248,0.8) 100%);
+    border-color: #d04e1d;
+    transition: .3s;
+    cursor: pointer;
+}
+.reminder-alarmBtn:active {
+    background: linear-gradient(to bottom, rgba(249,248,248,0.85) 0.5%, rgba(246,232,228,0.8) 100%);
+}
+.reminder-DownArrowBtn {
+    content: url('img/Common/List_DownArrow.png');
+    background: transparent;
+    left: 20%;
+    top: 49.5%;
+    height: 10%;
+    position: fixed;
+    border: none;
+    cursor: pointer;
+}
+.reminder-DownArrowBtn:active {
+    content: url('img/Common/List_DownArrow_Pressed.png');
+}
+
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
+label {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 20%;
+    height: 20%;
+    background: rgba(245,91,127,1);
+    display: block;
+    border-radius: 100px;
+    position: relative;
+    margin-left: 20%;
+    margin-right: 0;
+}
+label:after {
+    content: '';
+    position: absolute;
+    left: 0px;
+    width: 25%;
+    height: 150%;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+input:checked + label {
+    background: grey;
+}
+input:checked + label:after {
+    left: calc(100%);
+    transform: translateX(-100%);
+}
+label:active:after {
+    width: 25%;
+}
+
+/*******************************************************************
+The alarm panel sliding in from top of Reminder screen
+********************************************************************/
+#alarm-panel {
+    position: absolute;
+    width: 57%;
+    height: 45%;
+    top: 1.1%;
+    right: 0.7%;
+    background: rgba(241,239,237,0.85);
+    border: none;
+    color: rgba(177,64,98, 1);
+    border-top-left-radius: 40px;
+    border-top-right-radius: 30px;
+    transform: translateY(-100%);
+    -webkit-transform: translateY(-100%);
+    visibility: hidden;
+}
+.alarm-detail-head {
+    width: 100%;
+    height: 25%;
+    border-bottom: 5px solid rgba(177,64,98,1);
+    border-top-left-radius: 40px;
+    border-top-right-radius: 30px;
+    font-size: 9vh;
+    font-weight: bold;
+    text-align: center;
+}
+.alarm-detail-head-text {
+    width: 75%;
+    text-align: right;
+}
+.alarm-detail-head-pic {
+    width: 25%;
+    text-align: center;
+}
+#alarm-detail-head-bell {
+    position: relative;
+    content: url('img/Reminder/Bell.png');
+    vertical-align: middle;
+    object-fit: stretch;
+}
+.alarm-detail-body {
+    width: 100%;
+    height: 70%;
+    font-size: 6vh;
+    text-align: left;
+    padding: 0;
+    border-spacing: 0;
+}
+.alarm-detail-body-text-box {
+    width: 68%;
+/*    height: 33.3%;*/
+    padding-left: 3%;
+    padding-top: 0;
+}
+.alarm-detail-body-image-box {
+    width: 32%;
+/*    height: 100%;*/
+    text-align: center;
+    vertical-align: middle;
+}
+.alarm-detail-body-pic {
+    max-height: 23vh;
+}
+.alarm-detail-footer {
+    width: 100%;
+    height: 5%;
+    font-size: 4vh;
+    text-align: right;
+    border-top: 2px solid rgba(177,64,98,1);
+    padding: 0;
+    border-spacing: 0;
+}
+
+
+/*******************************************************************
+This section defines style which slides in from top of screen
+********************************************************************/
+.slide-in-from-top {
+    animation: slide-in-from-top 0.5s forwards;
+    -webkit-animation: slide-in-from-top 0.5s forwards;
+}
+
+.slide-out-to-top {
+    animation: slide-out-to-top 0.5s forwards;
+    -webkit-animation: slide-out-to-top 0.5s forwards;
+}
+
+@keyframes slide-in-from-top {
+    100% { transform: translateY(0%); }
+}
+
+@-webkit-keyframes slide-in-from-top {
+    100% { -webkit-transform: translateY(0%); }
+}
+
+@keyframes slide-out-to-top {
+    0% { transform: translateY(0%); }
+    100% { transform: translateY(-100%); }
+}
+
+@-webkit-keyframes slide-out-to-top {
+    0% { -webkit-transform: translateY(0%); }
+    100% { -webkit-transform: translateY(-100%); }
+}
+
+
+/*///////////////////////////////////////////////////////////////////
+Exercise screen section
+///////////////////////////////////////////////////////////////////*/
+/*******************************************************************
+Beginning of the exercise screen
+********************************************************************/
+.exercise-screen {
+    visibility: hidden;
+}
+
+/*******************************************************************
+The list of exercises for user to choose in the Exercise screen
+********************************************************************/
+.exercise-dropdown-driver {
+    position: fixed;
+    width: 38%;
+    height: 10%;
+    top: 2.5%;
+    left: 2.0%;
+    background: linear-gradient(to bottom, rgba(62,187,126, 0.7) 0.5%, rgba(164,255,162, 0.7) 100%);
+    display: flex;
+    align-items: center;
+    padding-left: 30px;
+    justify-content: flex-start;
+    text-decoration: none;
+    border: none;
+    border-radius: 30px;
+    color: rgba(24,102,21,1);
+    font-size: 7vh;
+    font-weight: bold;
+    box-shadow: 4px 4px 10px rgba(0,0,0, 0.55);
+    cursor: pointer;
+    transition: background 0.1s;
+}
+.exercise-dropdown-driver:active {
+    background: linear-gradient(to bottom, rgba(164,255,162, 0.8) 0.5%, rgba(62,187,126, 0.8) 100%);
+    box-shadow: none;
+}
+.exercise-dropdown-driver-suffix {
+    color: rgba(24,102,21,1);
+    font-size: 5.0vh;
+    font-weight: bold;
+    align-items: end;
+    justify-content: end;
+    text-align: right;
+    position: absolute;
+    margin-left: 78%;
+}
+.exercise-UpArrowBtn {
+    z-index: 1;
+    content: url('img/Common/List_UpArrow.png');
+    background: transparent;
+    left: 3%;
+    top: 13%;
+    height: 6%;
+    position: fixed;
+    border: none;
+    cursor: pointer;
+}
+.exercise-UpArrowBtn:active {
+    content: url('img/Common/List_UpArrow_Pressed.png');
+}
+.exercise-DownArrowBtn {
+    z-index: 1;
+    content: url('img/Common/List_DownArrow.png');
+    background: transparent;
+    left: 35.5%;
+    top: 13%;
+    height: 6%;
+    position: fixed;
+    border: none;
+    cursor: pointer;
+}
+.exercise-DownArrowBtn:active {
+    content: url('img/Common/List_DownArrow_Pressed.png');
+}
+.exercise-dropdown-list {
+    z-index: 1;
+    width: 38%;
+    height: 42%;
+    left: 2%;
+    top: 17.5%;
+    position: fixed;
+    cursor: pointer;
+    list-style-type: none;
+    border: none;
+    padding-left: 0;
+    overflow: hidden;
+}
+.exercise-dropdown-listitem {
+    width: 100%;
+    height: 23%;
+    margin-bottom: 1.2%;
+}
+.exercise-dropdown-listitem-btn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border-radius: 30px;
+    padding-left: 4%;
+    padding-right: 3%;
+    font-size: 7.0vh;
+    align-items: center;
+    justify-content: start;
+    text-align: left;
+    color: rgba(24,102,21,1);
+    background: linear-gradient(to bottom, rgba(164,255,162, 0.8) 0.5%, rgba(249,248,248, 0.8) 100%);
+    border-color: rgba(61,187,126, 1);
+    transition: .3s;
+    cursor: pointer;
+}
+.exercise-dropdown-listitem-btn:active {
+    background: linear-gradient(to bottom, rgba(249,248,248, 0.8) 0.5%, rgba(164,255,162, 0.8) 100%);
+}
+.exercise-dropdown-listitem-txt {
+    color: rgba(24,102,21,1);
+    font-size: 5.0vh;
+    align-items: end;
+    justify-content: end;
+    text-align: right;
+    position: absolute;
+    margin-left: 78%;
+}
+
+/*******************************************************************
+The count down number to prepare user for exercise
+********************************************************************/
+#exercise-readiness-countdown,
+.exercise-readiness-countdown {
+    position: absolute;
+    top: 6.5%;
+    left: 33.5%;
+    width: 20%;
+    height: 10%;
+    font-size: 1vh;
+    color: rgba(0,0,255, 0.5);
+    font-weight:bold;
+    text-align:center;
+    z-index: 1;
+}
+.countdown-number-bulger {
+    animation: fontBulger 1s forwards;
+    -webkit-animation: fontBulger 1s forwards;
+    -moz-animation: fontBulger 1s forwards;
+    -o-animation: fontBulger 1s forwards;
+}
+@-webkit-keyframes fontBulger  {
+    0% { font-size: 1vh; }
+    100% { font-size: 80vh; }
+}
+@-moz-keyframes fontBulger  {
+    0% { font-size: 1vh; }
+    100% { font-size: 80vh; }
+}
+@-o-keyframes fontBulger  {
+    0% { font-size: 1vh; }
+    100% { font-size: 80vh; }
+}
+@keyframes fontBulger  {
+    0% { font-size: 1vh; }
+    100% { font-size: 80vh; }
+}
+
+.countdown-number-reset {
+    animation: fontReset 0s;
+    -webkit-animation: fontReset 0s;
+    -moz-animation: fontReset 0s;
+    -o-animation: fontReset 0s;
+}
+@-webkit-keyframes fontReset  {
+    100% { font-size: 80vh; }
+    0% { font-size: 1vh; }
+}
+@-moz-keyframes fontReset  {
+    100% { font-size: 80vh; }
+    0% { font-size: 1vh; }
+}
+@-o-keyframes fontReset  {
+    100% { font-size: 80vh; }
+    0% { font-size: 1vh; }
+}
+@keyframes fontReset  {
+    100% { font-size: 80vh; }
+    0% { font-size: 1vh; }
+}
+
+/*******************************************************************
+The circular countdown circle for each selected exercise
+********************************************************************/
+#exercise-countdown-circle,
+.exercise-countdown-circle {
+    position: absolute;
+    top: 30%;
+    left: 33.7%;
+    visibility: hidden;
+    z-index: 2;
+}
+.exercise-countdown-fadein {
+    animation: exercise-countdown-fadein 7s;
+    -webkit-animation: exercise-countdown-fadein 7s;
+    -moz-animation: exercise-countdown-fadein 7s;
+    -o-animation: exercise-countdown-fadein 7s;
+    -ms-animation: exercise-countdown-fadein 7s;
+}
+.exercise-countdown-fadeout {
+    animation: exercise-countdown-fadeout 6s;
+    -webkit-animation: exercise-countdown-fadeout 6s;
+    -moz-animation: exercise-countdown-fadeout 6s;
+    -o-animation: exercise-countdown-fadeout 6s;
+    -ms-animation: exercise-countdown-fadeout 6s;
+    opacity: 0;
+}
+@keyframes exercise-countdown-fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1;}
+}
+@keyframes exercise-countdown-fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0;}
+}
+@-webkit-keyframes exercise-countdown-fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0;}
+}
+.exercise-countdown-remain-time {
+    position: absolute;
+    top: 32%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto';
+    font-weight: 100;
+    font-size: 6vw;
+    color: rgba(74,74,168, 1);
+    text-align: center;
+}
+.exercise-e-c-base {
+    fill: none;
+    stroke: #B6B6B6;
+    stroke-linecap: round;
+    stroke-width: 12px
+}
+.exercise-e-c-progress {
+    fill: none;
+    stroke:  rgba(74,74,168, 1);
+    stroke-width: 12px;
+    transition: stroke-dashoffset 0.7s;
+    stroke-linecap: round;
+}
+.exercise-e-c-pointer {
+    fill: #FFF;
+    stroke:  rgba(74,74,168, 1);
+    stroke-width: 4px;
+}
+.exercise-e-pointer { transition: transform 0.7s; }
+
+/*******************************************************************
+The demonstration stage for the character in the Exercise screen
+********************************************************************/
+#exercise-demo-stage {
+    position: absolute;
+    width: 38%;
+    height: 82%;
+    top: 14%;
+    left: 1.5%;
+    background: transparent;
+    border: solid 10px;
+    border-radius: 30px;
+    border-color: rgba(163,255,163, 1);
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+    visibility: hidden;
+}
+.exercise-demo-stage-pic {
+    content: url('img/Exercise/ExerciseDemoStage.png');
+    background: transparent;
+    border-radius: 20px;
+    left: 0%;
+    top: 0%;
+    width: 100%;
+    height: 11%;
+    position: fixed;
+    border: none;
+}
+
+
+/*******************************************************************
+This section defines style which slides in from left to right
+********************************************************************/
+.slide-in-from-left {
+    animation: slide-in-from-left 0.8s forwards;
+    -webkit-animation: slide-in-from-left 0.8s forwards;
+}
+
+.slide-out-to-left {
+    animation: slide-out-to-left 0.5s forwards;
+    -webkit-animation: slide-out-to-left 0.5s forwards;
+}
+
+@keyframes slide-in-from-left {
+    100% { transform: translateX(0%); }
+}
+
+@-webkit-keyframes slide-in-from-left {
+    100% { -webkit-transform: translateX(0%); }
+}
+
+@keyframes slide-out-to-left {
+    0% { transform: translateX(0%); opacity: 1;}
+    100% { transform: translateX(-100%); opacity: 0;}
+}
+
+@-webkit-keyframes slide-out-to-left {
+    0% { -webkit-transform: translateX(0%); opacity: 1;}
+    100% { -webkit-transform: translateX(-100%);  opacity: 0;}
+}
+
+/*******************************************************************
+The pose estimation for the Exercise screen
+********************************************************************/
+.exercise-play-button {
+    background: transparent url('img/Common/Play_Enabled.png') no-repeat;
+    left: 40.8%;
+    top: 2.8%;
+    width: 11%;
+    height: 11%;
+    position: fixed;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+}
+.exercise-play-button:active {
+    background: transparent url('img/Common/Play_Pressed.png') no-repeat;
+}
+.exercise-play-button:hover {
+    background: transparent url('img/Common/Play_Hovered.png') no-repeat;
+}
+.exercise-play-button:disabled {
+    background: transparent url('img/Common/Play_Disabled.png') no-repeat;
+    cursor: default;
+}
+.exercise-stop-button {
+    background: transparent url('img/Common/Stop_Enabled.png') no-repeat;
+    left: 40.8%;
+    top: 2.8%;
+    width: 11%;
+    height: 11%;
+    position: fixed;
+    border: none;
+    cursor: pointer;
+    z-index: 2;
+}
+.exercise-stop-button:active {
+    background: transparent url('img/Common/Stop_Pressed.png') no-repeat;
+}
+.exercise-stop-button:hover {
+    background: transparent url('img/Common/Stop_Hovered.png') no-repeat;
+}
+.exercise-stop-button:disabled {
+    background: transparent url('img/Common/Stop_Disabled.png') no-repeat;
+    cursor: default;
+}
+
+/*******************************************************************
+The pose estimation for the Exercise screen
+********************************************************************/
+#MediaPipe-input-video {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+}
+#exercise-pose-estimate-stage {
+    position: absolute;
+    display: flex;
+    width: 50.5%;
+    height: 93.5%;
+    top: 2.5%;
+    right: 1.5%;
+    background: transparent;
+    border: solid 10px;
+    border-radius: 30px;
+    border-color: rgba(163,255,163, 1);
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+    visibility: hidden;
+}
+#exercise-pose-estimate-canvas {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 100%;
+    border-radius: 20px;
+}
+
+#exercise-pose-estimate-unavailable {
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 30%;
+    top: 35%;
+    background: transparent;
+    font-size: 9.0vh;
+    font-weight: bold;
+    text-align: center;
+    color: red;
+}
+#exercise-pose-estimate-comments,
+.exercise-pose-estimate-comments {
+    position: absolute;
+    width: 100%;
+    height: 20%;
+    font-size: 7.0vh;
+    color: black;
+    text-align: center;
+    background: transparent;
+    border: none;
+    z-index: 1;
+}
+
+/*///////////////////////////////////////////////////////////////////
+For debugging purpose
+///////////////////////////////////////////////////////////////////*/
+#exercise_cheatsheet_1,
+.exercise_cheatsheet_1
+{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 12%;
+    left: 2.5%;
+    top: 5%;
+    padding: 0;
+    color: black;
+    font-size: 4vw;
+    font-weight: bold;
+    text-align: left;
+    justify-content: start;
+    align-items: start;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    background: transparent;
+    z-index: 0;
+}
+#exercise_cheatsheet_2,
+.exercise_cheatsheet_2
+{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 12%;
+    left: 2.5%;
+    top: 17%;
+    padding: 0;
+    color: black;
+    font-size: 4vw;
+    font-weight: bold;
+    text-align: left;
+    justify-content: start;
+    align-items: start;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    background: transparent;
+    z-index: 0;
+}
+#exercise_cheatsheet_3,
+.exercise_cheatsheet_3
+{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 12%;
+    left: 2.5%;
+    top: 29%;
+    padding: 0;
+    color: black;
+    font-size: 4vw;
+    font-weight: bold;
+    text-align: left;
+    justify-content: start;
+    align-items: start;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    background: transparent;
+    z-index: 0;
+}
+#exercise_cheatsheet_4,
+.exercise_cheatsheet_4
+{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 12%;
+    left: 2.5%;
+    top: 41%;
+    padding: 0;
+    color: black;
+    font-size: 4vw;
+    font-weight: bold;
+    text-align: left;
+    justify-content: start;
+    align-items: start;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    background: transparent;
+    z-index: 0;
+}
+#exercise_cheatsheet_5,
+.exercise_cheatsheet_5
+{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 12%;
+    left: 2.5%;
+    top: 53%;
+    padding: 0;
+    color: black;
+    font-size: 4vw;
+    font-weight: bold;
+    text-align: left;
+    justify-content: start;
+    align-items: start;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    background: transparent;
+    z-index: 0;
+}
+#exercise_cheatsheet_6,
+.exercise_cheatsheet_6
+{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 12%;
+    left: 2.5%;
+    top: 65%;
+    padding: 0;
+    color: black;
+    font-size: 4vw;
+    font-weight: bold;
+    text-align: left;
+    justify-content: start;
+    align-items: start;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    background: transparent;
+    z-index: 0;
+}
+#exercise_cheatsheet_7,
+.exercise_cheatsheet_7
+{
+    position: absolute;
+    display: flex;
+    width: 100%;
+    height: 12%;
+    left: 2.5%;
+    top: 77%;
+    padding: 0;
+    color: black;
+    font-size: 4vw;
+    font-weight: bold;
+    text-align: left;
+    justify-content: start;
+    align-items: start;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    background: transparent;
+    z-index: 0;
+}
+
+/*******************************************************************
+This section defines style which slides in from right to left
+********************************************************************/
+.slide-in-from-right {
+    animation: slide-in-from-right 0.8s forwards;
+    -webkit-animation: slide-in-from-right 0.8s forwards;
+}
+
+.slide-out-to-right {
+    animation: slide-out-to-right 0.5s forwards;
+    -webkit-animation: slide-out-to-right 0.5s forwards;
+    opacity: 0;
+}
+
+@keyframes slide-in-from-right {
+    100% { transform: translateX(0%); }
+}
+
+@-webkit-keyframes slide-in-from-right {
+    100% { -webkit-transform: translateX(0%); }
+}
+
+@keyframes slide-out-to-right {
+    0% { transform: translateX(0%); opacity: 1; }
+    -100% { transform: translateX(100%); opacity: 0; }
+}
+
+@-webkit-keyframes slide-out-to-right {
+    0% { -webkit-transform: translateX(0%); opacity: 1; }
+    -100% { -webkit-transform: translateX(100%); opacity: 0; }
+}
+
+/*///////////////////////////////////////////////////////////////////
+Entertainment screen section
+///////////////////////////////////////////////////////////////////*/
+.entertainment-screen {
+    visibility: hidden;
+}
+
+/*******************************************************************
+Equalizer
+********************************************************************/
+#entertain-equalizer {
+    position: absolute;
+    width: 35%;
+    height: 11%;
+    top: 3%;
+    left: 2%;
+    font-size: 3vh;
+    border-bottom: solid 6px rgba(128,0,0, 0.8);
+    transform: translateX(-100%);
+    -webkit-transform: translateX(-100%);
+}
+
+
+/*******************************************************************
+The list of songs for user to choose in the Entertainment screen
+********************************************************************/
+.entertain-dropdown-driver {
+    position: fixed;
+    width: 38%;
+    height: 10%;
+    top: 3%;
+    right: 2.0%;
+    background: linear-gradient(to bottom, rgba(254,177,204, 0.7) 0.5%, rgba(240,55,118, 0.7) 100%);
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    justify-content: center;
+    border: none;
+    border-radius: 30px;
+    color: white;
+    font-size: 7vh;
+    font-weight: bold;
+    box-shadow: 4px 4px 10px rgba(0,0,0, 0.55);
+    cursor: pointer;
+    transition: background 0.1s;
+}
+.entertain-dropdown-driver:active {
+    background: linear-gradient(to bottom, rgba(240,55,118, 0.8) 0.5%, rgba(254,177,204, 0.8) 100%);
+    box-shadow: none;
+}
+.entertain-UpArrowBtn {
+    z-index: 1;
+    content: url('img/Common/List_UpArrow.png');
+    background: transparent;
+    right: 3%;
+    top: 13.5%;
+    height: 6%;
+    position: fixed;
+    border: none;
+    cursor: pointer;
+}
+.entertain-UpArrowBtn:active {
+    content: url('img/Common/List_UpArrow_Pressed.png');
+}
+.entertain-DownArrowBtn {
+    z-index: 1;
+    content: url('img/Common/List_DownArrow.png');
+    background: transparent;
+    right: 35.5%;
+    top: 13.5%;
+    height: 6%;
+    position: fixed;
+    border: none;
+    cursor: pointer;
+}
+.entertain-DownArrowBtn:active {
+    content: url('img/Common/List_DownArrow_Pressed.png');
+}
+.entertain-dropdown-list {
+    z-index: 1;
+    width: 38%;
+    height: 42%;
+    right: 2%;
+    top: 18%;
+    position: fixed;
+    cursor: pointer;
+    list-style-type: none;
+    border: none;
+    padding-left: 0;
+    overflow: hidden;
+}
+.entertain-dropdown-listitem {
+    width: 100%;
+    height: 23%;
+    margin-bottom: 1.2%;
+}
+.entertain-dropdown-listitem-btn {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    border-radius: 30px;
+    padding-left: 4%;
+    padding-right: 3%;
+    font-size: 7.0vh;
+    align-items: center;
+    justify-content: start;
+    text-align: left;
+    color: white;
+    background: linear-gradient(to bottom, rgba(223,131,105, 0.8) 0.5%, rgba(198,108,83, 0.8) 100%);
+    border-color: brown;
+    transition: .3s;
+    cursor: pointer;
+}
+.entertain-dropdown-listitem-btn:active {
+    background: linear-gradient(to bottom, rgba(198,108,83, 0.8) 0.5%, rgba(223,131,105, 0.8) 100%);
+}
+
+#entertain-song-play-panel {
+    position: absolute;
+    width: 34%;
+    height: 28%;
+    top: 15%;
+    right: 3.5%;
+    background: rgba(186,104,200, 0.5);
+    border-radius: 30px;
+}
+#entertain-song-plan-decoration_L {
+    position: absolute;
+    left: 2.5%;
+    top: 6%;
+    width: 1%;
+    height: 88%;
+    border-radius: 30px;
+    background: rgba(255,255,255, 0.5);
+}
+#entertain-song-plan-decoration_R {
+    position: absolute;
+    right: 2.5%;
+    top: 6%;
+    width: 1%;
+    height: 88%;
+    border-radius: 30px;
+    background: rgba(255,255,255, 0.5);
+}
+.entertain-play-button {
+    background: transparent url('img/Entertainment/Play_Enabled.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    right: 26%;
+    top: 17%;
+    width: 12%;
+    height: 12%;
+    position: fixed;
+    object-fit: contain;
+    border: none;
+    cursor: pointer;
+}
+.entertain-play-button:disabled {
+    background: transparent url('img/Entertainment/Play_Disabled.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: default;
+}
+
+.entertain-full-karaoke-button {
+    background: transparent url('img/Entertainment/FullKaraoke_Enabled.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    right: 14.5%;
+    top: 17%;
+    width: 12%;
+    height: 12%;
+    position: fixed;
+    object-fit: contain;
+    border: none;
+    cursor: pointer;
+}
+.entertain-full-karaoke-button:disabled {
+    background: transparent url('img/Entertainment/FullKaraoke_Disabled.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: default;
+}
+
+.entertain-half-karaoke-button {
+    background: transparent url('img/Entertainment/HalfKaraoke_Enabled.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    right: 3%;
+    top: 17%;
+    width: 12%;
+    height: 12%;
+    position: fixed;
+    object-fit: contain;
+    border: none;
+    cursor: pointer;
+}
+.entertain-half-karaoke-button:disabled {
+    background: transparent url('img/Entertainment/HalfKaraoke_Disabled.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: default;
+}
+
+.entertain-stop-button {
+    background: transparent url('img/Entertainment/Stop_Enabled.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    right: 20%;
+    top: 29%;
+    width: 12%;
+    height: 12%;
+    position: fixed;
+    object-fit: contain;
+    border: none;
+    cursor: pointer;
+}
+.entertain-stop-button:disabled {
+    background: transparent url('img/Entertainment/Stop_Disabled.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: default;
+}
+
+.entertain-pause-button {
+    background: transparent url('img/Entertainment/Pause_Enabled.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    right: 8%;
+    top: 29%;
+    width: 12%;
+    height: 12%;
+    position: fixed;
+    object-fit: contain;
+    border: none;
+    cursor: pointer;
+}
+.entertain-pause-button:disabled {
+    background: transparent url('img/Entertainment/Pause_Disabled.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    cursor: default;
+}
+.entertain-resume-button {
+    background: transparent url('img/Entertainment/Resume_Enabled.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    right: 8%;
+    top: 29%;
+    width: 12%;
+    height: 12%;
+    position: fixed;
+    object-fit: contain;
+    border: none;
+    cursor: pointer;
+}
+#entertain-lyrics-ribbon {
+    position: absolute;
+    display: flex;
+    width: 95%;
+    height: 12%;
+    left: 2.5%;
+    bottom: 21%;
+    padding: 0;
+    font-size: 6vw;
+    text-align: center;
+    justify-content: center;
+    align-items: center;
+    border-top: none;
+    border-left: none;
+    border-right: none;
+    border-bottom: 5px solid purple;
+    background: transparent;
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+}
+/*///////////////////////////////////////////////////////////////////
+Chat screen section
+///////////////////////////////////////////////////////////////////*/
+.chat-screen {
+    visibility: hidden;
+}
+
+#chat-microphone {
+    position: absolute;
+    width: 38%;
+    height: 10%;
+    top: 3%;
+    right: 2.0%;
+    background: linear-gradient(to bottom, rgba(253,251,209, 0.8) 0.5%, rgba(252,245,42, 0.8) 100%);
+    text-decoration: none;
+    text-align: end;
+    border: none;
+    border-radius: 30px;
+    color: rgba(255,140,0, 0.9);
+    font-size: 6vh;
+    font-weight: bold;
+    box-shadow: 4px 4px 10px rgba(0,0,0, 0.55);
+    cursor: pointer;
+    padding-top: 0;
+    padding-bottom: 0;
+    padding-left: 0;
+    padding-right: 5%;
+}
+#chat-microphone:active {
+    background: linear-gradient(to bottom, rgba(252,245,42, 0.8) 0.5%, rgba(253,251,209, 0.8) 100%);
+    box-shadow: none;
+}
+#chat-microphone:disabled {
+    color: rgba(115,115,115, 0.9);
+    background: linear-gradient(to bottom, rgba(255,255,255, 0.8) 0.5%, rgba(128,128,128, 0.8) 100%);
+    box-shadow: none;
+    cursor: default;
+}
+
+
+#chat-microphone-icon {
+    position: absolute;
+    content: url('img/Chat/Mic-On.png');
+    background: transparent;
+    background-repeat: no-repeat;
+    background-size: contain;
+    left: 3%;
+    width: 20%;
+    height: 80%;
+    justify-content: start;
+    vertical-align: middle;
+    margin: 0;
+}
+
+/*******************************************************************
+Countdown circle for the microphone which user speaks to
+********************************************************************/
+#chat-countdown-circle,
+.chat-countdown-circle {
+    position: absolute;
+    top: 13%;
+    right: 11%;
+    visibility: hidden;
+    z-index: 2;
+}
+.chat-countdown-fadein {
+    animation: chat-countdown-fadein 5s;
+    -webkit-animation: chat-countdown-fadein 5s;
+    -moz-animation: chat-countdown-fadein 5s;
+    -o-animation: chat-countdown-fadein 5s;
+    -ms-animation: chat-countdown-fadein 5s;
+}
+.chat-countdown-fadeout {
+    animation: chat-countdown-fadeout 3s;
+    -webkit-animation: chat-countdown-fadeout 3s;
+    -moz-animation: chat-countdown-fadeout 3s;
+    -o-animation: chat-countdown-fadeout 3s;
+    -ms-animation: chat-countdown-fadeout 3s;
+    opacity: 0;
+}
+@keyframes chat-countdown-fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1;}
+}
+@keyframes chat-countdown-fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0;}
+}
+@-webkit-keyframes chat-countdown-fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0;}
+}
+
+.chat-countdown-remain-time {
+    position: absolute;
+    top: 32%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    font-family: 'Roboto';
+    font-weight: bold;
+    font-size: 6vw;
+    color: rgba(252,245,42, 1);
+    text-align: center;
+}
+.chat-e-c-base {
+    fill: none;
+    stroke: #B6B6B6;
+    stroke-linecap: round;
+    stroke-width: 12px
+}
+.chat-e-c-progress {
+    fill: none;
+    stroke: rgba(252,245,42, 1);
+    stroke-width: 12px;
+    transition: stroke-dashoffset 0.7s;
+    stroke-linecap: round;
+}
+.chat-e-c-pointer {
+    fill: #FFF;
+    stroke: rgba(252,245,42, 1);
+    stroke-width: 4px;
+}
+.chat-e-pointer { transition: transform 0.7s; }
+
+/*******************************************************************
+Microphone frequency visualizer
+********************************************************************/
+#chat-MicPhone-Visualizer-1 {
+    position: absolute;
+    top: -14%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+}
+#chat-MicPhone-Visualizer-2 {
+    position: absolute;
+    top: 14%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+}
+
+
+/*******************************************************************
+The digital clock in Chat screen
+********************************************************************/
+#chat-clock-container {
+    position: absolute;
+    right: 20%;
+    top: 25%;
+}
+
+.chat-clock-container::before { /* sobra a baixo do relogio*/
+    content: "";
+    position: absolute;
+    width: 100%;
+    height: 60px;
+    background: radial-gradient(rgba(0, 0, 0, 0.2), transparent, transparent);
+    border-radius: 50%;
+}
+
+.chat-clock-box {
+    position: relative;
+    width: 400px;
+    height: 400px;
+    backdrop-filter: blur(25px); /* coloca a caixa de vidro no centro */
+    border-radius: 50%;
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    animation: animate-clock-floating 5s ease-in-out infinite;
+    animation-delay: -2.5s;
+    z-index: 1;
+}
+
+.chat-clock {
+    position: absolute;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    top: 10px;
+    left: 10px;
+    right: 10px;
+    bottom: 10px;
+    background: radial-gradient(transparent, rgba(255, 255, 255, 0.2)), url("img/Chat/clock.png");
+    background-size: cover;
+    border-radius: 50%;
+    backdrop-filter: blur(25px);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    border-bottom: none;
+    border-right: none;
+    box-shadow: -10px -10px 20px rgba(255, 255, 255, 0.1),
+                 10px 10px 20px rgba(0, 0, 0, 0.1),
+                 0px 40px 50px rgba(0, 0, 0, 0.2);
+}
+
+.chat-clock::before {
+    content: "";
+    position: absolute;
+    width: 15px;
+    height: 15px;
+    background-color: green;
+    border-radius: 50%;
+    z-index: 10000;
+}
+
+.chat-clock-hour, .chat-clock-min, .chat-clock-sec {
+    position: absolute;
+}
+
+.chat-clock-hour, .chat-clock-hr {
+    width: 160px;
+    height: 160px;
+}
+
+.chat-clock-min, .chat-clock-mn {
+    width: 190px;
+    height: 190px;
+}
+
+.chat-clock-sec, .chat-clock-sc {
+    width: 230px;
+    height: 230px;
+}
+
+.chat-clock-hr, .chat-clock-mn, .chat-clock-sc {
+    display: flex;
+    justify-content: center;
+    position: absolute;
+    border-radius: 50%;
+}
+
+.chat-clock-hr::before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 80px;
+    background-color: grey;
+    border-radius: 6px;
+    z-index: 11;
+}
+
+.chat-clock-mn::before {
+    content: "";
+    position: absolute;
+    width: 4px;
+    height: 90px;
+    background-color: black;
+    border-radius: 6px;
+    z-index: 12;
+}
+
+.chat-clock-sc::before {
+    content: "";
+    position: absolute;
+    width: 2px;
+    height: 150px;
+    background-color: red;
+    border-radius: 6px;
+    z-index: 13;
+}
+@keyframes animate-clock-floating {
+    0%, 100% {
+        transform: translateY(10px);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+.chat-clock-fadein {
+    animation: chat-clock-fadein 3s;
+    -webkit-animation: chat-clock-fadein 3s;
+    -moz-animation: chat-clock-fadein 3s;
+    -o-animation: chat-clock-fadein 3s;
+    -ms-animation: chat-clock-fadein 3s;
+}
+.chat-clock-fadeout {
+    animation: chat-clock-fadeout 3s;
+    -webkit-animation: chat-clock-fadeout 3s;
+    -moz-animation: chat-clock-fadeout 3s;
+    -o-animation: chat-clock-fadeout 3s;
+    -ms-animation: chat-clock-fadeout 3s;
+    opacity: 0;
+}
+@keyframes chat-clock-fadein {
+  0% { opacity: 0; }
+  100% { opacity: 1;}
+}
+@keyframes chat-clock-fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0;}
+}
+@-webkit-keyframes chat-clock-fadeout {
+  0% { opacity: 1; }
+  100% { opacity: 0;}
+}
+
+/*******************************************************************
+The Calendar in Chat screen
+********************************************************************/
+#chat-calender {
+    position: absolute;
+    top: 15%;
+    left: 53%;
+    width: 45%;
+    height: 60%;
+    margin: auto;
+	background: rgba(255, 255, 255, 0.1);
+	box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	border-right: 1px solid rgba(255, 255, 255, 0.2);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(25px);
+	border-radius: 10px;
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+}
+
+.chat-calendar-month {
+    width: 100%;
+    height: 18%;
+    color: black;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-content: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+.chat-calendar-prev {
+    background: transparent url('img/Chat/CalendarLeft.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 8%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    justify-content: center;
+}
+.chat-calendar-next {
+    background: transparent url('img/Chat/CalendarRight.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    width: 8%;
+    height: 100%;
+    border: none;
+    cursor: pointer;
+    justify-content: center;
+}
+
+.chat-calendar-prev:hover,
+.chat-calendar-next:hover {
+    background-color: rgba(0, 0, 0, 0.2);
+    cursor: pointer;
+}
+.chat-month-year-area {
+    position: relative;
+    width: 84%;
+    height: 100%;
+}
+#chat-calendar-month-title {
+    width: 100%;
+    height: 60%;
+    top: 0;
+    font-size: 5vh;
+    text-align: center;
+    position: absolute;
+    -ms-transform: translateY(-60%);
+    -webkit-transform: translateY(-60%);
+    transform: translateY(-60%);
+}
+#chat-calendar-year-title {
+    width: 100%;
+    height: 40%;
+    top: 50%;
+    font-size: 3vh;
+    text-align: center;
+    position: absolute;
+    -ms-transform: translateY(-20%);
+    -webkit-transform: translateY(-20%);
+    transform: translateY(-20%);
+}
+
+
+.chat-calendar-weeks {
+    width: 100%;
+    height: 4%;
+    font-size: 2vh;
+    background-color: white;
+    color: black;
+    display: flex;
+    padding: 7px 0px;
+}
+
+.chat-calendar-weeks div {
+    width: 14.285%;
+    text-transform: uppercase;
+    text-align: center;
+}
+
+.chat-calendar-days {
+    width: 100%;
+    height: 78%;
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    padding: 10px 0px;
+}
+
+.chat-calendar-days div {
+    width: 14.285%;
+    height: 10.5%;
+    font-size: 3vh;
+    margin-bottom: 10px;
+    padding: 10px 0px;
+    transition: all 0.4s;
+}
+
+
+.activeday {
+    background-color: white;
+    height: 10.5%;
+}
+
+.prev-days {
+    color: #c7cfd3;
+}
+
+/*******************************************************************
+The translation board in the Chat screen
+********************************************************************/
+#chat-translation {
+    position: absolute;
+    top: 15%;
+    left: 53%;
+    width: 45%;
+    height: 60%;
+    margin: auto;
+	background: rgba(255, 255, 255, 0.1);
+	box-shadow: 0 25px 45px rgba(0,0,0,0.1);
+	border: 1px solid rgba(255, 255, 255, 0.5);
+	border-right: 1px solid rgba(255, 255, 255, 0.2);
+	border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+	backdrop-filter: blur(25px);
+	border-radius: 10px;
+    transform: translateX(100%);
+    -webkit-transform: translateX(100%);
+}
+#chat-translation-header {
+    width: 100%;
+    height: 7%;
+    color: grey;
+    padding: 2%;
+    font-size: 5vh;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    vertical-align: middle;
+}
+.chat-translated-text {
+    width: 98%;
+    height: 76%;
+    justify-content: start;
+    font-size: 7vh;
+    color: blue;
+    padding: 2%;
+}
+
+/*///////////////////////////////////////////////////////////////////
+Navigation bar section
+///////////////////////////////////////////////////////////////////*/
+/*******************************************************************
+defines the Navigation bar at the bottom of screen
+********************************************************************/
+.navigationBar {
+    visibility: hidden;
+}
+
+nav {
+    position: fixed;
+    bottom: 40px;
+    left: 0;
+    width: 100%;
+    height: 110px;
+    padding: 0;
+    transition: .3s;
+    box-sizing: border-box;
+}
+
+nav ul{
+    position: relative;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    align-items: center;
+}
+
+nav ul li {
+    position: relative;
+    width: 18%;
+    height: 100%;
+    margin: 0px 0px 0px 5.2%;
+    padding: 0;
+    display: inline-block;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+}
+
+nav ul li a {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    border: solid;
+    border-color: #49be25;
+    border-width: 8px;
+    border-radius: 20px;
+    font-size: 4vw;
+/*    line-height: 150%;*/
+    text-align: center;
+    text-decoration: none;
+    text-transform: uppercase;
+    transition: .3s;
+    color: rgba(124,104,83,1);
+    background: linear-gradient(135deg, rgba(213,170,147, 0.8) 70%, rgba(228,178,155, 0.8) 70%),
+                linear-gradient(135deg, rgba(240,208,172, 0.8) 71%, rgba(255,255,255, 0.8) 100%);
+    display: block;
+}
+nav ul li a:active {
+    background: linear-gradient(135deg, rgba(213,170,147, 0.8) 0.5%, rgba(255,255,255, 0.8) 70%),
+                linear-gradient(135deg, rgba(240,208,172, 0.8) 71%, rgba(228,178,155, 0.8) 100%);
+}
+nav ul li a:focus{
+    outline: none;
+}
+
+/*******************************************************************
+This is the dialog to provide loading info during application
+start up, it has 2 animations:
+1) Cimda logo filled with water and gradually rising
+2) A square browsing through each word and toggling in black & white
+********************************************************************/
+.loading-info-dialog {
+    position: absolute;
+    top: 2%;
+    left: 1%;
+    width: 60%;
+    height: 40%;
+	margin: 0;
+	padding: 0;
+	justify-content: start;
+	align-items: left;
+	font-family: sans-serif;
+	background: rgba(255,255,255,0.8);
+	border: solid 5px;
+	border-color: green;
+	border-top-right-radius: 70px;
+	border-bottom-right-radius: 70px;
+	border-bottom-left-radius: 80px;
+    animation: loading-info-dialog-slide1 1s ease-in-out;
+}
+@keyframes loading-info-dialog-slide1 {
+    0% {
+        left: -80%;
+        top: -80%;
+    }
+    25% {
+        left: -60%;
+        top: -60%;
+    }
+    50% {
+        left: -40%;
+        top: -40%;
+    }
+    75% {
+        left: -20%;
+        top: -20%;
+    }
+    90% {
+        left: -5%;
+        top: -5%;
+    }
+    100% {
+        left: 1%;
+        top: 2%;
+    }
+}
+@keyframes loading-info-dialog-slide2 {
+    0% {
+        transform: skewX(53deg) translateX(-500px);
+    }
+    60% {
+        transform: translateX(0px);
+    }
+    62% {
+        transform: skewX(0deg) translateX(30px);
+    }
+    70% {
+        transform: skew(-20deg);
+        opacity: 1;
+    }
+    80% {
+        transform: skew(0deg) translate(0);
+    }
+    90% {
+        transform: skew(-5deg);
+    }
+    100% {
+        transform: skew(0deg);
+    }
+}
+/*******************************************************************
+Loading animation 1: a big Cimda logo filled with water and
+gradually rising
+********************************************************************/
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,200,300,400,500,600,700,800,900');
+/*
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+*/
+.cimda-wave-logo {
+    top: 0%;
+  left: 24%;
+/*  justify-content: center;
+  align-items: center;
+  min-height: 10%;*/
+  background: #000;
+  vertical-align: text-top;
+}
+
+.cimda-wave-logo h2 {
+  top: 0%;
+  position: absolute;
+  left: 24%;
+  color: #fff;
+  transform: translate(-50%,-50%);
+  font-size: 11em;
+  vertical-align: top;
+}
+
+.cimda-wave-logo h2:nth-child(1) {
+    color: transparent;
+  -webkit-text-stroke: 2px #03a9f4;
+}
+
+.cimda-wave-logo h2:nth-child(2) {
+    color: #03a9f4;
+  animation: animate-cimda-wave-logo 4s ease-in-out infinite;
+}
+
+@keyframes animate-cimda-wave-logo {
+  0%,100%{
+    clip-path: polygon(0% 45%, 15% 44%, 32% 50%,
+      54% 60%, 70% 61%, 84% 59%, 100% 52%,
+      100% 100%, 0% 100%);
+  }
+  50%{
+    clip-path: polygon(0% 60%, 16% 65%, 34% 66%,
+      51% 62%, 67% 50%, 84% 45%, 100% 46%,
+      100% 100%, 0% 100%);
+  }
+}
+/*******************************************************************
+Loading animation 2: a square browsing through each word and
+toggling it into black & white
+********************************************************************/
+.text-007-style
+{
+    position: absolute;
+    left: 48%;
+    top: 34%;
+	font-size: 4em;
+	background: transparent;
+	color: #000;
+	letter-spacing: .1em;
+	padding: 0px;
+}
+.text-007-style span
+{
+	color: #fff;
+	mix-blend-mode: difference;
+
+}
+.text-007-style::before
+{
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 70px;
+	height: 100%;
+	background: #000;
+	-webkit-animation: move-text-007-style 5s ease normal infinite;
+  -moz-animation: move-text-007-style 5s ease normal infinite;
+  -ms-animation: move-text-007-style 5s ease normal infinite;
+  -o-animation: move-text-007-style 5s ease normal infinite;
+  animation: move-text-007-style 5s ease normal infinite;
+
+}
+@-webkit-keyframes move-text-007-style
+{
+	0%
+	{
+		left: 0;
+	}
+	50%
+	{
+		left: calc(100% - 90px);
+	}
+	100%
+	{
+		left: 0;
+	}
+}
+
+.loading-info-version {
+    position: absolute;
+    top: 84%;
+    right: 3%;
+    font-size: 1em;
+    color: grey;
+}
+hr {
+    position: absolute;
+    top: 86%;
+    width: 95%;
+    left: 2%;
+    display: block;
+    margin-start: auto;
+    margin-end: auto;
+    overflow: hidden;
+    border-style: inset;
+    border-width: 2px;
+}
+.loading-info-msg {
+    position: absolute;
+    top: 88%;
+    left: 4%;
+    font-size: 2em;
+    color: grey;
+}

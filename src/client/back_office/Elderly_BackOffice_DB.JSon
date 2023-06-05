@@ -1,0 +1,213 @@
+{
+  "LastUpdate": "31/10/2022 11:23:51 am",
+  "Reminder": [
+    {
+      "timeToTake": "09:30",
+      "simpleMediName": "心臟病藥",
+      "officialMediName": "Propranolol 10mg/Tab",
+      "howToTake": "口服,每日三次,每次1粒",
+      "prerequisite": "飯後或飽肚服",
+      "mediDesc": "子彈型,紅白色",
+      "mediPic": "Capsule.png"
+    },
+    {
+      "timeToTake": "12:00",
+      "simpleMediName": "降血壓藥",
+      "officialMediName": "Captopril 10mg/Tag",
+      "howToTake": "口服,每日三次,每次1粒",
+      "prerequisite": "飯後或飽肚服",
+      "mediDesc": "藥水,橙黃色",
+      "mediPic": "DrugLiquid.png"
+    },
+    {
+      "timeToTake": "14:25",
+      "simpleMediName": "皮膚濕疹藥",
+      "officialMediName": "STAQUIS™",
+      "howToTake": "每日兩次,塗擦患處",
+      "prerequisite": "患處清洗乾淨,抹乾",
+      "mediDesc": "枝裝,紅白色樽",
+      "mediPic": "Ointment.png"
+    },
+    {
+      "timeToTake": "16:00",
+      "simpleMediName": "眼藥水",
+      "officialMediName": "HYLO PARIN®",
+      "howToTake": "每晚一次,滴在雙眼",
+      "prerequisite": "使用前請拭乾淚水",
+      "mediDesc": "枝裝,白色樽",
+      "mediPic": "EyeDrop.png"
+    },
+    {
+      "timeToTake": "20:30",
+      "simpleMediName": "抗生素",
+      "officialMediName": "Antibiotic",
+      "howToTake": "口服,每日三次,每次2粒",
+      "prerequisite": "飯後或飽肚服",
+      "mediDesc": "子彈型,藍白色",
+      "mediPic": "Antibiotic.jpg"
+    },
+    {
+      "timeToTake": "22:30",
+      "simpleMediName": "降血壓藥",
+      "officialMediName": "Captopril 10mg/Tag",
+      "howToTake": "口服,每日三次,每次1粒",
+      "prerequisite": "飯後或飽肚服",
+      "mediDesc": "藥丸,白色",
+      "mediPic": "Pill.png"
+    },
+    {
+      "timeToTake": "23:45",
+      "simpleMediName": "皮膚濕疹藥",
+      "officialMediName": "STAQUIS™",
+      "howToTake": "每日兩次,塗擦患處",
+      "prerequisite": "患處清洗乾淨,抹乾",
+      "mediDesc": "枝裝,紅白色樽",
+      "mediPic": "Ointment.png"
+    },
+    {
+      "timeToTake": "24:00",
+      "simpleMediName": "眼藥水",
+      "officialMediName": "HYLO PARIN®",
+      "howToTake": "每晚一次,滴在雙眼",
+      "prerequisite": "使用前請拭乾淚水",
+      "mediDesc": "枝裝,白色樽",
+      "mediPic": "EyeDrop.png"
+    }
+  ],
+  "Exercise": [
+    {
+      "titleChinese": "伸展手",
+      "titleEnglish": "Stretching arms",
+      "durationStr": "70秒",
+      "durationTime": 70,
+      "animationSrc": "StretchingArms.fbx",
+      "animateIntro": "身體正面對住鏡頭",
+      "jointAnglesGuide": {
+        "shoulderLeft": 90.0,
+        "shoulderRight": 90.0,
+        "elbowLeft": 45.0,
+        "elbowRight": 45.0,
+        "hipLeft": 0,
+        "hipRight": 0,
+        "kneeLeft": 0,
+        "kneeRight": 0
+      }
+    },
+    {
+      "titleChinese": "壓腿",
+      "titleEnglish": "Leg pressing",
+      "durationStr": "90秒",
+      "durationTime": 90,
+      "animationSrc": "LegPressing.fbx",
+      "animateIntro": "身體正面對住鏡頭",
+      "jointAnglesGuide": {
+        "shoulderLeft": 0,
+        "shoulderRight": 0,
+        "elbowLeft": 0,
+        "elbowRight": 0,
+        "hipLeft": 145.0,
+        "hipRight": 145.0,
+        "kneeLeft": 145.0,
+        "kneeRight": 145.0
+      }
+    },
+    {
+      "titleChinese": "手繞環",
+      "titleEnglish": "Arm circle",
+      "durationStr": "70秒",
+      "durationTime": 70,
+      "animationSrc": "ArmCircle.fbx",
+      "animateIntro": "身體正面對住鏡頭",
+      "jointAnglesGuide": {
+        "shoulderLeft": 70.0,
+        "shoulderRight": 70.0,
+        "elbowLeft": 160.0,
+        "elbowRight": 160.0,
+        "hipLeft": 0,
+        "hipRight": 0,
+        "kneeLeft": 0,
+        "kneeRight": 0
+      }
+    },
+    {
+      "titleChinese": "抬腿",
+      "titleEnglish": "Lifting legs",
+      "durationStr": "60秒",
+      "durationTime": 60,
+      "animationSrc": "LiftingLegs.fbx",
+      "animateIntro": "身體正面對住鏡頭",
+      "jointAnglesGuide": {
+        "shoulderLeft": 0,
+        "shoulderRight": 0,
+        "elbowLeft": 0,
+        "elbowRight": 0,
+        "hipLeft": 80.0,
+        "hipRight": 80.0,
+        "kneeLeft": 80.0,
+        "kneeRight": 80.0
+      }
+    },
+    {
+      "titleChinese": "深蹲",
+      "titleEnglish": "Squatting",
+      "durationStr": "90秒",
+      "durationTime": 90,
+      "animationSrc": "Squatting.fbx",
+      "animateIntro": "身體正面對住鏡頭",
+      "jointAnglesGuide": {
+        "shoulderLeft": 0,
+        "shoulderRight": 0,
+        "elbowLeft": 0,
+        "elbowRight": 0,
+        "hipLeft": 90.0,
+        "hipRight": 90.0,
+        "kneeLeft": 90.0,
+        "kneeRight": 90.0
+      }
+    },
+    {
+      "titleChinese": "舉手",
+      "titleEnglish": "Raising hands",
+      "durationStr": "80秒",
+      "durationTime": 80,
+      "animationSrc": "RaisingHands.fbx",
+      "animateIntro": "身體正面對住鏡頭",
+      "jointAnglesGuide": {
+        "shoulderLeft": 120.0,
+        "shoulderRight": 120.0,
+        "elbowLeft": 45.0,
+        "elbowRight": 45.0,
+        "hipLeft": 0,
+        "hipRight": 0,
+        "kneeLeft": 0,
+        "kneeRight": 0
+      }
+    }
+  ],
+  "Entertainment": [
+    {
+      "title": "帝女花之香夭",
+      "songSubfolder": "帝女花之香夭",
+      "danceUrl": "BellyDancing.fbx",
+      "danceNotes": "Mixamo: BellyDancing / Stance=100 / Focus=100 / Overdrive=0 / Arm-Space=50 / Trim=0,100"
+    },
+    {
+      "title": "賣湯圓",
+      "songSubfolder": "賣湯圓",
+      "danceUrl": "SnakeHipHopDance.fbx",
+      "danceNotes": "Mixamo: SnakeHipHopDance / Arms=0 / Look=100 / Overdrive=0 / Arm-Space=90 / Trim=0,100"
+    },
+    {
+      "title": "魂化瑤臺夜合花",
+      "songSubfolder": "魂化瑤臺夜合花",
+      "danceUrl": "SambaDancing.fbx",
+      "danceNotes": "Mixamo: SambaDancing / Stance=100 / Overdrive=0 / Arm-Space=50 / Trim=0,100"
+    },
+    {
+      "title": "紫釵記劍合釵圓",
+      "songSubfolder": "紫釵記劍合釵圓",
+      "danceUrl": "JazzDancing.fbx",
+      "danceNotes": "Mixamo: JazzDancing / Style=100 / Overdrive=0 / Arm-Space=10 / Trim=0,100"
+    }
+  ]
+}
